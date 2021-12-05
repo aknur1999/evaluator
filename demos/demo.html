@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="contrast" class="text-block" style="color: white; background-color: black;">
+            This is a div with good contrast.
+        </div>
+        <div id="contrast" class="text-block" style="color: aqua; background-color: aliceblue;">
+            This is a div with bad contrast.
+        </div>
+        <div id="fontSize" class="text-block" style="font-size: 10px;">This is a div with tiny letters.</div>
+        <br>
+        <div id="flex-container">
+            <div class="flex-item" style="width: 33.33%">
+                This is an image with an alt text.
+                <img src="https://via.placeholder.com/300x200.png/a3cca3/fff" alt="image that has alternative text" srcset="" style="width: 100%">
+            </div>
+            <div class="flex-item" style="width: 33.33%">
+                This is an image with no alt text.
+                <img src="https://via.placeholder.com/300x200.png/a3cca3/fff" srcset="" style="width: 100%">
+            </div>
+            <div class="flex-item" style="width: 33.33%">
+                This is an image with no alt text.
+                <img src="https://via.placeholder.com/300x200.png/a3cca3/fff" alt="" srcset="" style="width: 100%">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<img src="#" alt="image that has alternative text">
+<img src="#" alt="">
