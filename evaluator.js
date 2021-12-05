@@ -1,23 +1,15 @@
-console.log("text");
-var p = String(document.children[0].innerText)
+console.log("text evaluator");
+var p = String(document.children[0].innerText);
 // var p= "{"
-console.log(p === "{");
-var temp
-for (let i = 0; i< p.length; i++) {
-    temp += p[i];
-}
-(function() {
-    // var visited = window.location.href;
-    chrome.storage.sync.set({
-       'ourList': {
-          listData: temp,
-       }
-    }, function() {
-       console.log("Just visited", temp);
-    });
- })();
+console.log(p);
+url = "google.com";
 
+var editorExtensionId = "hfkihmedibfamikodecbdncfiajbcblp";
+// chrome.extension.sendMessage({ msg: "hello" });
 
-// localStorage.setItem("evalLocalStorage", p)
+chrome.runtime.onMessage.addListener((msg, sender, response) => {
+  // First, validate the message's structure.
+  console.log("mymsg", msg, response);
 
-// alert(p)
+  response(p);
+});

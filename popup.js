@@ -1,52 +1,33 @@
-var p
-(function() {
-    chrome.storage.onChanged.addListener(function(changes, areaName) {
-        console.log("New item in storage", changes.ourList.newValue);
-        p = changes.ourList.newValue
+var q;
 
-    })
- })();
-
-document.getElementById("recall").addEventListener("click", function showList() {
-    document.getElementById("test").innerHTML = p
-
-    // let hardLists = ["youtube", "twitch", "google", "aliexpress", "w3", "myList6", "myList7", "myList8"]
-    // for ( let i = 0; i< hardLists.length; i++) {
-    //     var x = document.getElementById(hardLists[i])
-    //     // console.log(x)
-    //     x.style.display = "none"
-    // }
-    // var y = document.getElementById("fname").value;
-    // var temp
-    // switch (y) {
-    //     case "youtube.com":
-    //         temp = "youtube"
-    //         break;
-    //     case "twitch.tv":
-    //         temp = "twitch"
-    //     case "google.com":
-    //         temp = "google"
-    //     case "aliexpress.com":
-    //         temp = "aliexpress"
-    //     case "w3schools.com":
-    //         temp = "w3"
-    //     default:
-    //         break;
-    // }
-    // console.log(temp)
-    // var x = document.getElementById(temp);
-    // console.log(x)
-    // x.style.display = "block";
-
-
-}
-)
+document
+  .getElementById("recall")
+  .addEventListener("click", function showList() {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      console.log("sending message");
+      chrome.tabs.sendMessage(tabs[0].id, { action: "readDom" }, setDOMInfo);
+      setDOMInfo(P);
+    });
+  });
 
 // Submit button
-document.getElementById("myButton").addEventListener("click", function recalled() {
+document
+  .getElementById("myButton")
+  .addEventListener("click", function recalled() {
     var x = document.getElementById("myButtonA");
     var y = document.getElementById("fname").value;
-    var url = ("https://www.alexa.com/find-similar-sites/data?site=" + y)
-    x.setAttribute('href', url)
-    console.log(x)
-})
+    var url = "https://www.alexa.com/find-similar-sites/data?site=" + y;
+    x.setAttribute("href", url);
+    console.log(x);
+  });
+
+// chrome.runtime.onMessage.addListener((msg, sender, response) => {
+//   console.log("mymsg in popup", msg);
+//   const myElem = document.getElementById("test");
+//   myElem.appendChild(document.createTextNode(msg));
+// });
+
+const setDOMInfo = (info) => {
+  const myElem = document.getElementById("test");
+  myElem.appendChild(document.createTextNode(info));
+};
