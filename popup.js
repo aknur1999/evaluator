@@ -1,7 +1,14 @@
+var p
+(function() {
+    chrome.storage.onChanged.addListener(function(changes, areaName) {
+        console.log("New item in storage", changes.ourList.newValue);
+        p = changes.ourList.newValue
+
+    })
+ })();
+
 document.getElementById("recall").addEventListener("click", function showList() {
-    var p = localStorage.getItem("evalLocalStorage")    
-    alert(p)
-    
+    document.getElementById("test").innerHTML = p
 
     // let hardLists = ["youtube", "twitch", "google", "aliexpress", "w3", "myList6", "myList7", "myList8"]
     // for ( let i = 0; i< hardLists.length; i++) {
@@ -42,5 +49,4 @@ document.getElementById("myButton").addEventListener("click", function recalled(
     var url = ("https://www.alexa.com/find-similar-sites/data?site=" + y)
     x.setAttribute('href', url)
     console.log(x)
-    // console.log(x)
 })
