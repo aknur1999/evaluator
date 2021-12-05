@@ -7,6 +7,7 @@ document
       console.log("sending message");
       chrome.tabs.sendMessage(tabs[0].id, { action: "readDom" }, setDOMInfo);
       setDOMInfo(P);
+      console.log(setDOMInfo(P))
     });
   });
 

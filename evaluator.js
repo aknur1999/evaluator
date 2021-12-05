@@ -1,7 +1,10 @@
 console.log("text evaluator");
-var p = String(document.children[0].innerText);
-// var p= "{"
-console.log(p);
+var p = ""
+for (let i =0; i < Object.entries(JSON.parse(document.children[0].innerText))[0][1].length; i++){
+   if (Object.entries(JSON.parse(document.children[0].innerText))[0][1][i].site2 != undefined) {
+   var p  = p + Object.entries(JSON.parse(document.children[0].innerText))[0][1][i].site2 + ", ";}
+}
+console.log(p)
 url = "google.com";
 
 var editorExtensionId = "hfkihmedibfamikodecbdncfiajbcblp";
