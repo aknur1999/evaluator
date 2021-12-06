@@ -13,9 +13,18 @@
   },
   "content_scripts": [
     {
-      "js": ["evaluator.js"],
+      "js": ["readAlexa.js"],
       "matches": ["https://www.alexa.com/*"],
       "run_at": "document_end"
+    },
+    {
+      "js": ["evaluator.js"],
+      "matches": ["https://*/*"],
+      "run_at": "document_end"
     }
-  ]
+  ],
+  "web_accessible_resources": [{
+    "resources": ["jquery-3.4.1.min.js", "html2canvas.min.js", "EmulateTab.js"],
+    "matches": ["<all_urls>"]
+  }]
 }

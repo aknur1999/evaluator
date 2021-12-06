@@ -5,7 +5,7 @@ document
   .addEventListener("click", function showList() {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       console.log("sending message");
-      chrome.tabs.sendMessage(tabs[0].id, { action: "readDom" }, setDOMInfo);
+      chrome.tabs.sendMessage(tabs[0].id, { action: "recall" }, showSimilarSites);
       // setDOMInfo(P); 
       // console.log(setDOMInfo(P))
     });
@@ -26,9 +26,12 @@ document
 document
 .getElementById("evaluator")
 .addEventListener("click", function evalled() {
-  console.log("test")
-  
-
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    console.log("Sending message to evaluate...");
+    chrome.tabs.sendMessage(tabs[0].id, { action: "eval" }, showScore);
+    // setDOMInfo(P); 
+    // console.log(setDOMInfo(P))
+  });
 })
 
 // chrome.runtime.onMessage.addListener((msg, sender, response) => {
@@ -38,8 +41,8 @@ document
 // });
 
 
-var allSites = []
-const setDOMInfo = (info) => {
+const showSimilarSites = (info) => {
+  var allSites = []
   const myContainer = document.getElementById("similarSitesContainer");
   var lists = JSON.parse(info).results
   lists.forEach(listElem => {
@@ -58,3 +61,7 @@ const setDOMInfo = (info) => {
   })
   console.log(allSites)
 };
+
+const showScore = (score) => {
+  document.getElementById("score").innerHTML = "The accessibility score of this website is " + score + "."
+}
