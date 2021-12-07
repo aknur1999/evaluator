@@ -47,9 +47,12 @@
         width: 30px;
       }
 
-      .entry {
+      #entry_id {
+        display: flex;
         align-items: center;
-        padding: 15px 15px;
+        justify-content: space-between;
+        padding: 15px 22px;
+        width: 100%;
       }
       .modal-header {
         align-items: center;
@@ -108,6 +111,69 @@
       .linkColor {
         color: purple;
       }
+
+      .entryURL {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        /* justify-content: space-between; */
+      }
+      .url {
+        font-size: larger;
+      }
+      #fname {
+        height: 28px;
+        width: 180px;
+        border-top-color: lightgray;
+        border-bottom-color: black;
+        border-left-color: lightgray;
+        border-right-color: black;
+        border-radius: 10px;
+        /* margin-left: 9px; */
+      }
+      #myButton {
+        border-radius: 10px;
+        background-color: palevioletred;
+        color: white;
+        width: 90px;
+        height: 35px;
+        opacity: 1;
+        transition: 0.3s;
+        display: inline-block;
+        text-decoration: none;
+        cursor: pointer;
+        margin-left: 15px;
+      }
+      #myButton:hover {opacity: 0.6;}
+      #myButtonA {
+        color: white
+      }
+
+      .entryButtons {
+        margin-top: 22px;
+      }
+      #recall {
+        border-radius: 10px;
+        background-color: palevioletred;
+        color: white;
+        width: 135px;
+        height: 35px;
+      }
+      #recall:hover {opacity: 1;}
+      
+      #evaluator {
+        border-radius: 10px;
+        background-color: palevioletred;
+        color: white;
+        width: 135px;
+        height: 35px;
+        margin-left: 20px;
+      } */
+      #evaluator:hover {opacity: 1;}
+
+      .textColor {
+        color:white 
+      }
     </style>
   </head>
   <body>
@@ -124,110 +190,34 @@
 
     <div class="entry" id="entry_id">
       <form>
-        <label for="url">Website URL</label>
-        <input type="text" name="fname" id="fname" /><br /><br />
-        <button type="button" id="myButton">
-          <div>
-            <a
-              href="https://www.alexa.com/find-similar-sites/data?site="
-              ,
+        <div class="entryURL">
+          <!-- <label for="url" class="url">URL:    </label> -->
+          <input type="text" name="fname" id="fname" placeholder="Input URL"/><br /><br />
+          
+          <button type="button" id="myButton" class="myButton">
+            <a 
+              href="https://www.alexa.com/find-similar-sites/data?site=",
               id="myButtonA"
+              class="textColor"
               target="blank_"
               >Submit</a
             >
-          </div>
-        </button>
-
-        <button type="button" id="recall">Recall</button>
+          </button>
+        </div>
+        <div class="entryButtons">
+          <button type="button" id="recall">Recall</button>
         
-        <button type="button" id="evaluator">Evaluate</button>
+          <button type="button" id="evaluator">Evaluate</button>
+          
+          <ul id="similarSitesContainer">
+  
+          </ul>
+  
+          <div id="score"></div>
+        </div>
         
-        <ul id="similarSitesContainer">
 
-        </ul>
 
-        <div id="score"></div>
-
-        <!-- <ul id="youtube" style="display: none">
-          <li> <a href="netflix.com">  </a>netflix.com</li>
-          <li>imdb.com</li>
-          <li>disneyplus.com</li>
-          <li>hulu.com</li>
-          <li>primevideo.com</li>
-          <li>dailymotion.com</li>
-          <li>vimeo.com</li>
-          <li>bilibili.com</li>
-          <li>twitch.tv</li>
-          <li>nicovideo.jp</li>
-        </ul>
-
-        <ul id="twitch" style="display: none">
-          <li>steamcommunity.com</li>
-          <li>own3d.tv</li>
-          <li>epicgames.com</li>
-          <li>streamlabs.com</li>
-          <li>wowhead.com</li>
-          <li>nexusmods.com</li>
-          <li>gyazo.com</li>
-          <li>liquipedia.net</li>
-          <li>hltv.org</li>
-          <li>op.gg</li>
-        </ul>
-
-        <ul id="google" style="display: none">
-          <li>faebook.com</li>
-          <li>twitter.com</li>
-          <li>instagram.com</li>
-          <li>bing.com</li>
-          <li>reddit.com</li>
-          <li>altavista.com</li>
-          <li>dogpile.com</li>
-          <li>discord.com</li>
-          <li>github.com</li>
-          <li>linkedin.com</li>
-        </ul>
-
-        <ul id="aliexpress" style="display: none">
-          <li>ebay.com</li>
-          <li>alibaba.com</li>
-          <li>amazon.com</li>
-          <li>dhgate.com</li>
-          <li>banggood.com</li>
-          <li>wish.com</li>
-          <li>etsy.com</li>
-          <li>lightinthebox.com</li>
-          <li>amazon.co.uk</li>
-          <li>made-in-china.com</li>
-        </ul>
-
-        <ul id="w3" style="display: none">
-          <li>php.net</li>
-          <li>stackoverflow.com</li>
-          <li>geeksforgeeks.org</li>
-          <li>tutorialspointcom</li>
-          <li>css-tricks.com</li>
-          <li>programiz.com</li>
-          <li>codegrepper.com</li>
-          <li>freecodecamp.org</li>
-          <li>realpython.com</li>
-          <li>javatpoint.com</li>
-        </ul> -->
-
-        <ul id="myList6" style="display: none">
-          5 4 3 2 1
-        </ul>
-
-        <ul id="myList7" style="display: none">
-          5 4 3 2 1
-        </ul>
-
-        <ul id="myList8" style="display: none">
-          5 4 3 2 1
-        </ul>
-
-        <ul id="myList9" style="display: none">
-          5 4 3 2 1
-        </ul>
       </form>
     </div>
 

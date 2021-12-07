@@ -1,4 +1,6 @@
 var q;
+// document
+
 
 document
   .getElementById("recall")
@@ -6,6 +8,7 @@ document
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       console.log("sending message");
       chrome.tabs.sendMessage(tabs[0].id, { action: "recall" }, showSimilarSites);
+
       // setDOMInfo(P); 
       // console.log(setDOMInfo(P))
     });
@@ -44,6 +47,7 @@ document
 const showSimilarSites = (info) => {
   var allSites = []
   const myContainer = document.getElementById("similarSitesContainer");
+  myContainer.innerHTML = ""
   var lists = JSON.parse(info).results
   lists.forEach(listElem => {
     if(listElem.site2) {
